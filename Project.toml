@@ -1,7 +1,7 @@
 name = "ddnests"
 uuid = "2f79b5d8-af4d-454b-9254-5c5c9f35fcd0"
 version = "0.1.0"
-authors = ["Fernando Herrera"]
+authors = ["Felipe Herrera"]
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
