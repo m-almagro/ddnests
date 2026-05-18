@@ -1,6 +1,6 @@
 # ddnests.jl
 
-A Julia package for **Data-Driven Nested Logit (DDNL)** demand estimation. It jointly estimates the nesting structure and structural parameters of nested logit models from market-level data, without requiring the researcher to pre-specify product groupings.
+A Julia package for **Data-Driven Nests (DDnests)** demand estimation. It jointly estimates the nesting structure and structural parameters of nested logit models from market-level data, without requiring the researcher to pre-specify product groupings.
 
 ## Overview
 
@@ -82,7 +82,7 @@ Uses two complementary heuristics on the SSR-vs-K curve:
 
 The package always selects the **maximum** K among sigma-validated candidates from both methods. This avoids under-fitting when the K_range is narrow.
 
-**Note on K_range**: With a narrow range (e.g., 2:5), the chord method has few points and may underestimate K. Use `K_range=2:10` for robust selection.
+**Note on K_range**: With a narrow range (e.g., 2:5), the chord method has few points and may underestimate K. Use `K_range=2:10` as a baseline for robust selection.
 
 ### Out-of-sample cross-validation (`:out_of_sample_elbow`)
 
