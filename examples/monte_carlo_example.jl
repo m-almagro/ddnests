@@ -12,7 +12,7 @@ using Random, Statistics, LinearAlgebra, DataFrames
 # --------------------------------------------------------------------------
 # Parameters
 # --------------------------------------------------------------------------
-J = 15          # Number of products
+J = 100         # Number of products
 M = 30          # Number of markets
 K_true = 3      # True number of groups
 P = 2           # Number of exogenous characteristics
@@ -128,7 +128,7 @@ end
 # Build GH instruments manually for this synthetic data
 Z_instruments = zeros(J * M, P)
 for m in 1:M
-    rows_in_m = [(j-1)*M + m for j in 1:J]
+    rows_in_m = [(j - 1) * M + m for j in 1:J]
     for p in 1:P
         x_vals = X_full[rows_in_m, p]
         sum_x = sum(x_vals)
@@ -145,22 +145,22 @@ end
 # --------------------------------------------------------------------------
 println("\nConstructing DDNLData...")
 data = DDNLData(Y_missing, X_full, prices, shares_missing, product_ids, market_ids,
-                Z_instruments, J, M, P)
+    Z_instruments, J, M, P)
 
 println("Running DDNL pipeline (K_range=2:6)...\n")
 result = ddnl(data;
-    K_range = 2:6,
-    n_starts = 500,
-    k_selection = :in_sample_elbow,
-    verbose = true
+    K_range=2:6,
+    n_starts=500,
+    k_selection=:in_sample_elbow,
+    verbose=true
 )
 
 # --------------------------------------------------------------------------
 # Verify results
 # --------------------------------------------------------------------------
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("VERIFICATION")
-println("=" ^ 60)
+println("="^60)
 println("True K: $K_true")
 println("Estimated K*: $(result.optimal_k)")
 println("True groups: ", true_groups)
